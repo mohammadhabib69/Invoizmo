@@ -1,0 +1,7 @@
+export const toCents = (amount: number): number => {
+  return Math.round(amount * 100);
+};
+
+export const fromCents = (cents: number): number => {
+  return Number((cents / 100).toFixed(2));
+};

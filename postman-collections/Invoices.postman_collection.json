@@ -1,0 +1,76 @@
+{
+  "info": {
+    "_postman_id": "invoices-1234-5678-90ab-cdef12345678",
+    "name": "Invoices",
+    "description": "Invoices endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "POST Create invoice",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"invoiceNumber\": \"INV-0001\",\n  \"status\": \"draft\",\n  \"template\": \"modern\",\n  \"customization\": {},\n  \"sender\": {},\n  \"client\": {},\n  \"currency\": \"USD\",\n  \"taxPercentage\": 0,\n  \"taxAmount\": 0,\n  \"subtotal\": 100,\n  \"total\": 100,\n  \"notes\": \"\",\n  \"invoiceDate\": \"2026-04-15T00:00:00.000Z\",\n  \"dueDate\": \"2026-05-15T00:00:00.000Z\",\n  \"lineItems\": [\n    {\n      \"name\": \"Test Line Item\",\n      \"description\": \"Test description\",\n      \"quantity\": 1,\n      \"unitPrice\": 100,\n      \"total\": 100\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/invoices",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "invoices"]
+        }
+      }
+    },
+    {
+      "name": "GET List invoices",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/invoices",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "invoices"]
+        }
+      }
+    },
+    {
+      "name": "GET Invoice by id",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/invoices/{{invoice_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "invoices", "{{invoice_id}}"]
+        }
+      }
+    },
+    {
+      "name": "DELETE Soft delete invoice",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/invoices/{{invoice_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "invoices", "{{invoice_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5002" },
+    { "key": "accessToken", "value": "" },
+    { "key": "invoice_id", "value": "" }
+  ]
+}

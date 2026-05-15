@@ -1,0 +1,47 @@
+{
+  "info": {
+    "_postman_id": "clients-1234-5678-90ab-cdef12345678",
+    "name": "Clients",
+    "description": "Clients endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Client",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"ABC Corp\",\n  \"email\": \"client@example.com\",\n  \"phone\": \"+1234567890\",\n  \"company\": \"ABC Corporation\",\n  \"currency\": \"USD\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/clients",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "clients"]
+        }
+      }
+    },
+    {
+      "name": "Get All Clients",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{accessToken}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/v1/clients",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "clients"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5002" },
+    { "key": "accessToken", "value": "" }
+  ]
+}
