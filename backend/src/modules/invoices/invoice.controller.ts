@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { Invoice } from '../../models/Invoice';
 import { User } from '../../models/User';
+import { Notification } from '../../models/Notification';
+import { socketService } from '../../services/socket.service';
 
 export const getNextInvoiceNumber = async (req: Request & { user?: any }, res: Response, next: NextFunction) => {
   try {
@@ -161,6 +163,28 @@ export const updateInvoiceStatus = async (req: Request & { user?: any }, res: Re
 
     if (!invoice) {
       return res.status(404).json({ success: false, error: 'INVOICE_NOT_FOUND' });
+    }
+
+    // Create Notification
+    let notificationType: 'invoice_sent' | 'invoice_viewed' | 'invoice_paid' | 'invoice_overdue' | 'system' = 'system';
+    if (status === 'sent') notificationType = 'invoice_sent';
+    else if (status === 'viewed') notificationType = 'invoice_viewed';
+    else if (status === 'paid') notificationType = 'invoice_paid';
+    else if (status === 'overdue') notificationType = 'invoice_overdue';
+
+    if (notificationType !== 'system') {
+      const notification = await Notification.create({
+        userId: req.user!.id,
+        type: notificationType,
+        title: `Invoice ${status.charAt(0).toUpperCase() + status.slice(1)}`,
+        message: `Invoice ${invoice.invoiceNumber} has been marked as ${status}.`,
+        relatedId: invoice._id,
+        relatedType: 'invoice'
+      });
+
+      // Emit real-time event
+      socketService.emitToUser(req.user!.id, 'notification_received', notification);
+      socketService.emitToUser(req.user!.id, 'invoice_updated', invoice);
     }
 
     res.status(200).json({ success: true, data: invoice });

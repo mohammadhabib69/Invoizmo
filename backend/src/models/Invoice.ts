@@ -39,6 +39,8 @@ export interface IInvoiceDoc extends Document {
   invoiceDate: Date;
   dueDate: Date;
   isDeleted: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const lineItemSchema = new Schema<ILineItem>({

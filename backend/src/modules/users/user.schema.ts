@@ -1,5 +1,19 @@
 import { z } from 'zod';
 
+const customThemeColorsSchema = z.object({
+  primary: z.string(),
+  primaryForeground: z.string(),
+  secondary: z.string(),
+  accent: z.string(),
+  background: z.string(),
+  foreground: z.string(),
+  muted: z.string(),
+  mutedForeground: z.string(),
+  border: z.string(),
+  input: z.string(),
+  ring: z.string(),
+});
+
 export const updateUserSchema = z.object({
   body: z.object({
     firstName: z.string().min(2).optional(),
@@ -15,6 +29,9 @@ export const updateUserSchema = z.object({
     invoicePrefix: z.string().optional(),
     defaultTemplate: z.enum(['classic', 'modern', 'minimal']).optional(),
     accentColor: z.string().optional(),
+    themeMode: z.enum(['light', 'dark', 'system']).optional(),
+    colorTheme: z.string().optional(),
+    customThemeColors: customThemeColorsSchema.optional(),
     logoUrl: z.string().url().optional(),
   }),
 });

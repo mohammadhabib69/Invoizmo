@@ -44,6 +44,21 @@ export interface IUser extends Document {
   invoiceCounter: number;
   defaultTemplate: string;
   accentColor: string;
+  themeMode: 'light' | 'dark' | 'system';
+  colorTheme: string;
+  customThemeColors?: {
+    primary: string;
+    primaryForeground: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    foreground: string;
+    muted: string;
+    mutedForeground: string;
+    border: string;
+    input: string;
+    ring: string;
+  };
   isDeleted: boolean;
   deletedAt?: Date;
   createdAt: Date;
@@ -64,6 +79,20 @@ const businessAddressSchema = new Schema<IBusinessAddress>({
   state: { type: String, required: true },
   zip: { type: String, required: true },
   country: { type: String, required: true },
+});
+
+const customThemeColorsSchema = new Schema({
+  primary: { type: String, required: true },
+  primaryForeground: { type: String, required: true },
+  secondary: { type: String, required: true },
+  accent: { type: String, required: true },
+  background: { type: String, required: true },
+  foreground: { type: String, required: true },
+  muted: { type: String, required: true },
+  mutedForeground: { type: String, required: true },
+  border: { type: String, required: true },
+  input: { type: String, required: true },
+  ring: { type: String, required: true },
 });
 
 const userSchema = new Schema<IUser>(
@@ -95,6 +124,9 @@ const userSchema = new Schema<IUser>(
     invoiceCounter: { type: Number, default: 0 },
     defaultTemplate: { type: String, default: 'classic' },
     accentColor: { type: String, default: '#1D1E22' },
+    themeMode: { type: String, enum: ['light', 'dark', 'system'], default: 'dark' },
+    colorTheme: { type: String, default: 'slate' },
+    customThemeColors: customThemeColorsSchema,
     isDeleted: { type: Boolean, default: false },
     deletedAt: { type: Date },
   },

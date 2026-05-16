@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Geist+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Geist', sans-serif;
+            background-color: #fcf8f9;
+        }
+        .geist-mono {
+            font-family: 'Geist Mono', monospace;
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {background: "#fcf8f9", "surface-bright": "#fcf8f9", "on-surface": "#1c1b1c", "on-tertiary": "#ffffff", "secondary-fixed": "#eddcfd", "on-secondary-fixed": "#21172e", "secondary-fixed-dim": "#d1c0e0", "inverse-primary": "#c5c6ce", surface: "#fcf8f9", primary: "#000000", "surface-container-high": "#ebe7e7", "primary-fixed": "#e2e2eb", "outline-variant": "#c7c6cb", secondary: "#665975", "on-primary-container": "#82838b", "tertiary-container": "#191c1d", "surface-container-low": "#f6f3f3", "primary-container": "#191b22", error: "#ba1a1a", "on-tertiary-fixed": "#191c1d", "error-container": "#ffdad6", "surface-container-lowest": "#ffffff", "secondary-container": "#ead9fa", "inverse-on-surface": "#f4f0f0", "primary-fixed-dim": "#c5c6ce", "on-background": "#1c1b1c", "on-surface-variant": "#46464b", "surface-tint": "#5d5e65", "on-secondary": "#ffffff", outline: "#77777c", "surface-container-highest": "#e5e2e2", "on-error": "#ffffff", "on-secondary-container": "#6a5d79", "surface-dim": "#ddd9d9", "on-tertiary-fixed-variant": "#454748", "on-primary": "#ffffff", "inverse-surface": "#313031", "on-primary-fixed": "#191b22", "tertiary-fixed": "#e1e3e4", "on-error-container": "#93000a", "surface-variant": "#e5e2e2", "tertiary-fixed-dim": "#c5c7c8", "on-secondary-fixed-variant": "#4e425c", "surface-container": "#f1eded", tertiary: "#000000", "on-tertiary-container": "#828485", "on-primary-fixed-variant": "#45464e"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {"stack-md": "16px", "container-max": "1280px", gutter: "24px", "stack-sm": "8px", "margin-desktop": "40px", unit: "8px", "margin-mobile": "16px", "stack-lg": "32px"}, fontFamily: {"headline-lg": ["Geist"], "body-sm": ["Geist"], "label-sm": ["Geist"], "headline-md": ["Geist"], "display-lg": ["Geist"], "label-md": ["Geist"], "body-lg": ["Geist"], "body-md": ["Geist"], "headline-lg-mobile": ["Geist"], headline: ["Geist"], display: ["Geist"], body: ["Geist"], label: ["Geist"]}, fontSize: {"headline-lg": ["32px", {lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600"}], "body-sm": ["14px", {lineHeight: "20px", fontWeight: "400"}], "label-sm": ["12px", {lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500"}], "headline-md": ["24px", {lineHeight: "32px", fontWeight: "600"}], "display-lg": ["48px", {lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700"}], "label-md": ["14px", {lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600"}], "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}], "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}], "headline-lg-mobile": ["28px", {lineHeight: "36px", fontWeight: "600"}]}}}};</script>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- SideNavBar - Shared Component -->
+<aside class="fixed left-0 top-0 h-full w-[280px] bg-primary-container border-r border-outline-variant flex flex-col z-50">
+<div class="px-6 py-10">
+<h1 class="text-headline-md font-headline-md font-bold text-secondary-fixed">Invoizmo</h1>
+<p class="text-on-primary-container font-label-md text-label-md mt-1">Enterprise Plan</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container hover:bg-surface-container-highest/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container hover:bg-surface-container-highest/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Invoices</span>
+</a>
+<!-- Active State: Clients -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container/10 text-secondary-fixed border-l-4 border-secondary-fixed" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container hover:bg-surface-container-highest/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container hover:bg-surface-container-highest/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container hover:bg-surface-container-highest/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 py-6 border-t border-outline-variant/20 space-y-1">
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Log Out</span>
+</button>
+</div>
+</aside>
+<!-- TopAppBar - Shared Component -->
+<header class="flex justify-between items-center w-full px-margin-desktop py-stack-sm ml-[280px] max-w-[calc(100%-280px)] bg-surface border-b border-outline-variant sticky top-0 z-40 shadow-sm">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-black text-primary">Invoizmo</span>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#">Overview</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#">Analytics</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-all" href="#">History</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-6 py-2 rounded-lg hover:opacity-90 transition-opacity">
+                New Invoice
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[280px] p-margin-desktop min-h-screen">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Clients</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your directory of 128 business partners.</p>
+</div>
+<button class="bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-8 py-3 rounded-xl shadow-sm flex items-center gap-2 hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                Add Client
+            </button>
+</div>
+<!-- Filter & Search Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 mb-stack-lg flex flex-col md:flex-row items-center gap-4 shadow-sm">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary font-body-md text-body-md" placeholder="Search by name, email, or company..." type="text"/>
+</div>
+<div class="flex items-center bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="p-2 bg-white shadow-sm rounded-md text-primary">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="list">list</span>
+</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-3 border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                Filters
+            </button>
+</div>
+<!-- Grid View: 3-column Client Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Client Card 1 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-start justify-between mb-6">
+<div class="w-14 h-14 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-headline-md text-headline-md font-bold">
+                        AK
+                    </div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Aether Kinetics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">billing@aetherkinetics.com</p>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Invoiced</span>
+<span class="font-headline-md text-headline-md geist-mono">$42,850.00</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" href="#">
+                        View Invoices
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Client Card 2 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-start justify-between mb-6">
+<div class="w-14 h-14 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-headline-md text-headline-md font-bold">
+                        NV
+                    </div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Nebula Ventures</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">finance@nebula.io</p>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Invoiced</span>
+<span class="font-headline-md text-headline-md geist-mono">$12,400.00</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" href="#">
+                        View Invoices
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Client Card 3 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-start justify-between mb-6">
+<div class="w-14 h-14 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center font-headline-md text-headline-md font-bold">
+                        OS
+                    </div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Oasis Software</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">ops@oasis-soft.com</p>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Invoiced</span>
+<span class="font-headline-md text-headline-md geist-mono">$98,200.00</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" href="#">
+                        View Invoices
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Client Card 4 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-start justify-between mb-6">
+<div class="w-14 h-14 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-headline-md text-headline-md font-bold">
+                        TR
+                    </div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Terraform Realty</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">payments@terraform.com</p>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Invoiced</span>
+<span class="font-headline-md text-headline-md geist-mono">$5,200.00</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" href="#">
+                        View Invoices
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Client Card 5 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-start justify-between mb-6">
+<div class="w-14 h-14 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-headline-md text-headline-md font-bold">
+                        QL
+                    </div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Quantum Labs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">accounting@quantumlabs.tech</p>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Invoiced</span>
+<span class="font-headline-md text-headline-md geist-mono">$156,000.00</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" href="#">
+                        View Invoices
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Client Card 6 -->
+<div class="group bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex items-start justify-between mb-6">
+<div class="w-14 h-14 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-headline-md text-headline-md font-bold">
+                        ZP
+                    </div>
+<button class="p-1 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Zenith Partners</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">partner@zenith.co</p>
+<div class="pt-4 border-t border-outline-variant flex justify-between items-end">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wider">Total Invoiced</span>
+<span class="font-headline-md text-headline-md geist-mono">$31,900.00</span>
+</div>
+<a class="font-label-md text-label-md text-secondary hover:underline flex items-center gap-1" href="#">
+                        View Invoices
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Slide Panel Overlay -->
+<div class="fixed inset-0 bg-primary/20 backdrop-blur-sm z-[60] flex justify-end">
+<!-- The Slide Panel -->
+<div class="w-full max-w-[480px] h-full bg-white shadow-2xl flex flex-col overflow-y-auto">
+<div class="p-stack-lg border-b border-outline-variant flex items-center justify-between sticky top-0 bg-white z-10">
+<h2 class="font-headline-md text-headline-md text-primary">Client Details</h2>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="p-stack-lg space-y-stack-lg">
+<!-- Profile Header -->
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-display-lg text-[32px] font-bold mb-4">
+                        AK
+                    </div>
+<h3 class="font-headline-lg text-headline-lg text-primary">Aether Kinetics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Industrial Logistics • United Kingdom</p>
+</div>
+<!-- Contact Info -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div class="flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Email Address</span>
+<span class="font-body-md text-body-md font-medium">billing@aetherkinetics.com</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</div>
+<div class="flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Phone Number</span>
+<span class="font-body-md text-body-md font-medium">+44 (0) 20 7946 0123</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div class="flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Address</span>
+<span class="font-body-md text-body-md font-medium">12 Canary Wharf, London, E14 5AB</span>
+</div>
+</div>
+</div>
+<!-- Revenue Stats -->
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 border border-outline-variant rounded-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Revenue</span>
+<span class="font-headline-md text-headline-md geist-mono">$42,850</span>
+</div>
+<div class="p-4 border border-outline-variant rounded-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Open Invoices</span>
+<span class="font-headline-md text-headline-md geist-mono">3</span>
+</div>
+</div>
+<!-- History Timeline -->
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                        Recent Activity
+                    </h4>
+<div class="space-y-6 relative before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant">
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-white border-2 border-secondary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Oct 24, 2023</span>
+<span class="font-body-md text-body-md text-primary">Invoice <span class="font-bold">#INV-8821</span> Sent</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$12,000.00 • Consulting Services</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-white border-2 border-outline flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Sep 15, 2023</span>
+<span class="font-body-md text-body-md text-primary">Payment Received</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$8,400.00 • Q3 Maintenance</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-white border-2 border-outline flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Aug 10, 2023</span>
+<span class="font-body-md text-body-md text-primary">New Client Onboarded</span>
+</div>
+</div>
+</div>
+<div class="pt-stack-lg border-t border-outline-variant flex gap-4 sticky bottom-0 bg-white pb-stack-lg">
+<button class="flex-1 px-6 py-3 border border-outline-variant rounded-xl font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                        Edit Client
+                    </button>
+<button class="flex-1 px-6 py-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:opacity-90 transition-opacity">
+                        Create Invoice
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -12,6 +12,8 @@ export interface IPayment extends Document {
   notes?: string;
   isDeleted: boolean;
   deletedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const paymentSchema = new Schema<IPayment>(

@@ -25,7 +25,10 @@ export const getAllPayments = async (req: Request & { user?: any }, res: Respons
     const payments = await Payment.find({
       userId: req.user!.id,
       isDeleted: false,
-    }).sort({ createdAt: -1 });
+    })
+    .populate('invoiceId', 'invoiceNumber')
+    .populate('clientId', 'name')
+    .sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: payments });
   } catch (error) {
     next(error);
@@ -38,7 +41,9 @@ export const getPayment = async (req: Request & { user?: any }, res: Response, n
       _id: req.params.id,
       userId: req.user!.id,
       isDeleted: false,
-    });
+    })
+    .populate('invoiceId', 'invoiceNumber')
+    .populate('clientId', 'name');
     if (!payment) {
       return res.status(404).json({ success: false, error: 'PAYMENT_NOT_FOUND' });
     }
