@@ -21,7 +21,20 @@ const app = express();
 app.use(helmet());
 app.use(
   cors({
-    origin: env.FRONTEND_URL,
+    origin: (origin, callback) => {
+      const allowedOrigins = [
+        env.FRONTEND_URL,
+        env.FRONTEND_URL.endsWith('/') ? env.FRONTEND_URL.slice(0, -1) : env.FRONTEND_URL + '/',
+        'http://localhost:3000',
+        'http://localhost:3001'
+      ].filter(Boolean);
+      
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.some(ao => origin?.startsWith(ao.replace(/\/$/, '')))) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
